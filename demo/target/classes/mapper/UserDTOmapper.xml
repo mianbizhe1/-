@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.first_week.demo.mapper.UserDTOmapper">
+    <select id="GetAllUser" resultType="com.first_week.demo.Entity.UserDTO" parameterType="Long">
+        select * from user
+    </select>
+    <select id="GetUserById" resultType="com.first_week.demo.Entity.UserDTO" parameterType="Long">
+        select * from user where Id=#{id}
+    </select>
+    <update id="UpdateUserById" parameterType="java.lang.Long">
+        update user set (name,age) values (#{name},#{age})
+    </update>
+    <insert id="insertuser" parameterType="com.first_week.demo.Entity.UserDTO" useGeneratedKeys="true">
+        insert into user (Name,Age) values(#{name}, #{age})
+    </insert>
+
+    <delete id="DeleteUserById"  parameterType="java.lang.Long">
+       delete from user where Id = #{id}
+    </delete>
+
+
+    <select id="selectByid" resultType="com.first_week.demo.Entity.UserDTO">
+        select * from user where Id = #{id}
+    </select>
+</mapper>
